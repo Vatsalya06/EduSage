@@ -1,0 +1,183 @@
+/* styles.css - full-width soft pastel professional theme
+   Fonts: Montserrat for headings, Open Sans for body
+   Layout: fluid full-width content with a comfortable max-width
+   Responsive friendly, avoids 100vw/200vw pitfalls
+*/
+
+/* ===== Root vars ===== */
+:root{
+  --primary-1: #667EEA;
+  --primary-2: #764BA2;
+  --accent: #d8572a;
+  --bg: #F5F7FA;
+  --card-bg: #ffffff;
+  --muted: #7b7b7b;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --container-max: 1400px;
+  --gutter: 24px;
+}
+
+/* ===== Base ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+html,body,#root, .stApp {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+}
+
+/* gentle page background image handled by app.py (keeps fixed) */
+.stApp {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== Container (main content) =====
+   Full-width look: block-container stretches to viewport but keeps a comfortable max width.
+   Avoid using 100vw directly (scrollbars cause issues).
+*/
+.block-container, .main {
+  width: calc(100% - 2 * var(--gutter));
+  max-width: var(--container-max);
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--gutter) !important;
+  padding-right: var(--gutter) !important;
+  box-sizing: border-box;
+}
+
+/* Sidebar styling */
+[data-testid="stSidebar"] {
+  background: rgba(255,255,255,0.65) !important;
+  backdrop-filter: blur(6px);
+  padding: 18px !important;
+  border-right: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Sidebar user avatar */
+[data-testid="stSidebar"] img {
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(102,126,234,0.08);
+}
+
+/* Headings */
+h1, h2, h3, .modal-title, .stText {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary-1);
+  margin: 0 0 10px 0;
+}
+
+/* Utility spacing for sections */
+.section-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 30px rgba(102,126,234,0.06);
+  margin-bottom: 22px;
+  border: 1px solid rgba(102,126,234,0.03);
+}
+
+/* Form inputs and textareas */
+textarea, input, select, .stTextInput, .stTextArea {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 16px !important;
+  color: #222 !important;
+}
+
+.stTextInput label, .stTextArea label {
+  font-size: 15px !important;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Input fields sizing */
+.stTextInput input, .stTextArea textarea, .stTextInput > div > input, .stTextArea > div > textarea {
+  width: 100% !important;
+  min-width: 220px !important;
+  height: 44px !important;
+  padding: 10px 12px !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid rgba(34,34,34,0.08) !important;
+  box-sizing: border-box;
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+/* focus styles */
+.stTextInput > div > input:focus, .stTextArea > div > textarea:focus {
+  outline: none !important;
+  border-color: var(--primary-1) !important;
+  box-shadow: 0 6px 18px rgba(102,126,234,0.08);
+}
+
+/* Buttons */
+.stButton > button {
+  background: linear-gradient(135deg, var(--primary-1) 0%, var(--primary-2) 100%) !important;
+  border: none;
+  color: white !important;
+  font-weight: 600 !important;
+  border-radius: 999px !important;
+  padding: 10px 18px !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 18px rgba(102,126,234,0.14) !important;
+}
+
+.stButton > button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+/* File uploader spacing */
+.stFileUploader>div {
+  margin-bottom: 20px;
+}
+
+/* Feature grid / cards */
+.feature-grid {
+  display: flex;
+  gap: 20px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.feature-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(102,126,234,0.06);
+  padding: 18px;
+  min-width: 220px;
+  flex: 1 1 260px;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+.feature-card h3 { font-size: 18px; color: #333; margin: 8px 0 6px; }
+.feature-desc { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+
+/* Modal preview (form) */
+form div[role="group"], .stText {
+  font-family: 'Open Sans', sans-serif;
+  color: #444;
+}
+
+/* small utility */
+.small-muted { font-size: 13px; color: var(--muted); }
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 900px) {
+  :root { --gutter: 16px; --container-max: 1000px; }
+  .stTextInput input, .stTextArea textarea { font-size: 15px !important; height: 40px !important; }
+  .feature-grid { justify-content: center; }
+  .block-container { width: calc(100% - 2 * var(--gutter)); padding-left: var(--gutter) !important; padding-right: var(--gutter) !important; }
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  h1, h2, h3 { font-size: 18px; }
+  .stButton > button { padding: 8px 12px !important; font-size: 14px !important; }
+  .section-card { padding: 14px; }
+}

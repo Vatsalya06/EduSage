@@ -1,0 +1,8 @@
+streamlit
+python-dotenv
+openai
+pdfplumber
+python-pptx
+python-docx
+reportlab
+bcrypt
