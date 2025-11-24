@@ -390,7 +390,7 @@ if pdf_text:
             </h4>
             <div style="font-family:'Open Sans',sans-serif; font-size:1rem; color:#444; margin-bottom:18px;">
                 {st.session_state.get('modal_content', '')}
-            </div>
+              </div>
             """, unsafe_allow_html=True)
             submitted = st.form_submit_button("✕ Close")
             if submitted:
